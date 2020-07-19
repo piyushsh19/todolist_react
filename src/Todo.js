@@ -4,10 +4,10 @@ import db from './firebase'
 
 function Todo(props) {
     return (
-        <List>
+        <List>  
             <ListItem>
                 
-                <ListItemText primary= 'Task' secondary= {props.text.text} />
+                <ListItemText primary= {props.text.text} secondary= 'Task to Complete'  />
             </ListItem>
             <Button onClick= {event => {
             db.collection('todos').doc(props.text.id).delete();

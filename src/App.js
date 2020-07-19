@@ -23,7 +23,7 @@ function App() {
       <form>
       <h1>Todo-List</h1>
       <input value = {input} onChange = { event => setInput(event.target.value)}/>
-      <Button type="submit" onClick={addTodo}  variant="contained" color="secondary">
+      <Button disabled={!input} type="submit" onClick={addTodo}  variant="contained" color="secondary">
         Add Item
       </Button>
       </form>

@@ -7,7 +7,7 @@ function Todo(props) {
         <List>
             <ListItem>
                 
-                <ListItemText primary= 'Task' secondary= {props.todo.todo} />
+                <ListItemText primary= 'Task' secondary= {props.text} />
             </ListItem>
             <Button onClick= {event => {
             db.collection('todos').doc(props.text.id).delete();

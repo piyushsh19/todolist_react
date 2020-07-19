@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     // this code here fires when app loads
     db.collection('todos').orderBy('timestamp','desc').onSnapshot(snapshot => {
-      setTodos(snapshot.docs.map(doc => doc.data().todo)) // here we have array of object thats why we pass todo to return string
+      setTodos(snapshot.docs.map(doc => ({id: doc.id,todo: doc.data().todo}))) // here we have array of object thats why we pass todo to return string
     })
     
   }, [])

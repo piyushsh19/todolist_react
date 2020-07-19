@@ -29,7 +29,7 @@ function App() {
     db.collection('todos').add({
       todo: input, //this return to snapshot
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    });
+    })
     //console.log('add inputs');
     //setTodos([...todos, input]); //stor locally not in db
     setInput('');

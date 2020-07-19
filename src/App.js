@@ -3,7 +3,7 @@ import { Button, FormControl,InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Todo from "./Todo";
 import db from './firebase';
-import firebase from 'firebase;'
+import firebase from 'firebase';
 
 function App() {
 

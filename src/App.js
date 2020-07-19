@@ -3,6 +3,7 @@ import { Button, FormControl,InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Todo from "./Todo";
 import db from './firebase';
+import firebase from 'firebase;'
 
 function App() {
 
@@ -14,8 +15,8 @@ function App() {
 
   useEffect(() => {
     // this code here fires when app loads
-    db.collection('todos').onSnapshot(snapshot => {
-      setTodos(snapshot.docs.map(doc => doc.data().todo))
+    db.collection('todos').orderBy('timestamp','desc').onSnapshot(snapshot => {
+      setTodos(snapshot.docs.map(doc => doc.data().todo)) // here we have array of object thats why we pass todo to return string
     })
     
   }, [])
@@ -23,8 +24,14 @@ function App() {
 
   const addTodo = (event) => {
     event.preventDefault();
-    console.log('ho gya');
-    setTodos([...todos, input]);
+
+    //ad to db
+    db.collection('todos').add({
+      todo: input, //this return to snapshot
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    //console.log('add inputs');
+    //setTodos([...todos, input]); //stor locally not in db
     setInput('');
     
   }
